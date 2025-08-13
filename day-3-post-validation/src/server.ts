@@ -9,5 +9,5 @@ app.use(express.json());
 app.use("/api/v1/users", userRouter);
 
 app.listen(PORT, () => {
-    console.log(`🚀 Day 2 server running on http://localhost:${PORT}`);
+    console.log(`🚀 Day 3 server running on http://localhost:${PORT}`);
 });

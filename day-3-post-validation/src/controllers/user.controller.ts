@@ -22,7 +22,8 @@ export const createUser = (request: Request, response: Response) => {
         return;
     }
 
-    const newUser = requestBody;
+    const { name, email } = requestBody;
+    const newUser = { id: users.length + 1, name, email };
     users.push(newUser);
 
     // Resource created
@@ -48,7 +49,6 @@ const searchUsers = (userId: Number) => {
 // GET /users/:id
 export const getUserById = (request: Request, response: Response) => {
     const userIdParam = request.params.id;
-    const requestBody = request.body;
     const userId = Number(userIdParam);
 
     const { success, user } = searchUsers(userId);

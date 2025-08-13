@@ -4,39 +4,34 @@ const isValidName = (nameValue: unknown): boolean => {
         return false;
     }
 
-    const trimmedName = nameValue.trim();
-    if (trimmedName === "") {
-        return false;
-    }
-
     // Regex to match alphabetic characters (upper/lowercase) and spaces
     const namePattern = new RegExp(
         [
             // Start of string
             "^",
 
+            // First word (letters only)
+            "[A-Za-z]+",
+
+            // Start group for " space + word"
+            "(",
+
+            // Space
+            "\\s",
+
             // At least one letter
             "[A-Za-z]+",
 
-            // Start of non-capturing group
-            "(?:",
-
-            // A single space
-            "\\s",
-
-            // Followed by at least one letter
-            "[A-Za-z]+",
-
-            // Group can repeat zero or more times
+            // Repeat zero or more times
             ")*",
 
             // End of string
             "$",
         ].join(""),
-        "u" // Unicode flag
+        "u"
     );
 
-    return namePattern.test(trimmedName);
+    return namePattern.test(nameValue);
 };
 
 // Validate if a string is a valid email address

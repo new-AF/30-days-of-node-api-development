@@ -5,7 +5,8 @@
     "main": "index.js",
     "scripts": {
         "day-1": "tsx watch --tsconfig day-1-setup/tsconfig.json day-1-setup/src/server.ts",
-        "day-2": "tsx watch --tsconfig day-2-routing-controllers/tsconfig.json day-2-routing-controllers/src/server.ts"
+        "day-2": "tsx watch --tsconfig day-2-routing-controllers/tsconfig.json day-2-routing-controllers/src/server.ts",
+        "day-3": "tsx watch --tsconfig day-3-post-validation/tsconfig.json day-3-post-validation/src/server.ts"
     },
     "keywords": [],
     "author": "",
