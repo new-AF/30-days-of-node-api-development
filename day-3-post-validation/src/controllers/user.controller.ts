@@ -1,7 +1,15 @@
 import { Request, Response } from "express";
-import { isValidUserInput } from "@/validators/user.validator";
+// import { isValidUserInput } from "@/validators/user.validator";
+import {
+    createUserSchema,
+    userIdParamsSchema,
+    userModelSchema,
+    type UserModel,
+} from "@/validators/user.schema";
 
-const users = [
+import { z } from "zod";
+
+const users: UserModel[] = [
     { id: 1, name: "Alice", email: "alice@example.com" },
     { id: 2, name: "Bob", email: "bob@example.com" },
 ];
@@ -11,19 +19,30 @@ export const createUser = (request: Request, response: Response) => {
     // Request body already parsed as JSON
     const requestBody = request.body;
 
-    const { success, error } = isValidUserInput(requestBody);
+    // const { success, error } = isValidUserInput(requestBody);
+    const bodyResult = createUserSchema.safeParse(request.body);
+    const { success, data, error } = bodyResult;
 
     if (success === false) {
         // Bad request, often malformed user input
         response.status(400);
         response.json({
-            error,
+            error: z.flattenError(error),
         });
         return;
     }
 
-    const { name, email } = requestBody;
-    const newUser = { id: users.length + 1, name, email };
+    const { name, email } = data;
+    const newUser: UserModel = { id: users.length + 1, name, email };
+
+    // Optional: validate final model shape as a guard-rail
+    const modelCheck = userModelSchema.safeParse(newUser);
+    if (modelCheck.success === false) {
+        response.status(500);
+        response.json({ error: "Internal model validation failed." });
+        return;
+    }
+
     users.push(newUser);
 
     // Resource created
@@ -48,8 +67,19 @@ const searchUsers = (userId: Number) => {
 
 // GET /users/:id
 export const getUserById = (request: Request, response: Response) => {
-    const userIdParam = request.params.id;
-    const userId = Number(userIdParam);
+    const {
+        success: paramParseSuccess,
+        data,
+        error,
+    } = userIdParamsSchema.safeParse(request.params);
+
+    if (paramParseSuccess === false) {
+        response.status(400);
+        response.json({ error: z.flattenError(error) });
+        return;
+    }
+
+    const { id: userId } = data;
 
     const { success, user } = searchUsers(userId);
     if (!success) {

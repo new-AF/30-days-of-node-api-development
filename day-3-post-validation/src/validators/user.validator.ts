@@ -4,7 +4,7 @@ const isValidName = (nameValue: unknown): boolean => {
         return false;
     }
 
-    // Regex to match alphabetic characters (upper/lowercase) and spaces
+    // Regex to match alphabetic characters (upper/lowercase) and optional space between
     const namePattern = new RegExp(
         [
             // Start of string
@@ -13,7 +13,7 @@ const isValidName = (nameValue: unknown): boolean => {
             // First word (letters only)
             "[A-Za-z]+",
 
-            // Start group for " space + word"
+            // Start group for "space + word"
             "(",
 
             // Space
