@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-// import { isValidUserInput } from "@/validators/user.validator";
 import {
     createUserSchema,
     userIdParamsSchema,
@@ -19,7 +18,6 @@ export const createUser = (request: Request, response: Response) => {
     // Request body already parsed as JSON
     const requestBody = request.body;
 
-    // const { success, error } = isValidUserInput(requestBody);
     const bodyResult = createUserSchema.safeParse(request.body);
     const { success, data, error } = bodyResult;
 
@@ -35,7 +33,7 @@ export const createUser = (request: Request, response: Response) => {
     const { name, email } = data;
     const newUser: UserModel = { id: users.length + 1, name, email };
 
-    // Optional: validate final model shape as a guard-rail
+    // Validate final model shape as a guard-rail
     const modelCheck = userModelSchema.safeParse(newUser);
     if (modelCheck.success === false) {
         response.status(500);
