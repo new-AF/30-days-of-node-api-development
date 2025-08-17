@@ -1,18 +1,15 @@
 import { Request, Response } from "express";
 import { z } from "zod";
 import { users } from "@/data/users.store";
-import {
-    createUserSchema,
-    userModelSchema,
-    type UserModel,
-} from "@/validators/user.schema";
+import { userModelSchema, type UserModel } from "@/validators/users/user.model";
+import { createUserSchema } from "@/validators/users/user.requests";
 
 // POST /users
 export const createUser = (request: Request, response: Response) => {
     // Request body already parsed as JSON
     const requestBody = request.body;
 
-    const bodyResult = createUserSchema.safeParse(request.body);
+    const bodyResult = createUserSchema.safeParse(requestBody);
     const { success, data, error } = bodyResult;
 
     if (success === false) {
