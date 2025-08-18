@@ -3,7 +3,7 @@ import { z } from "zod";
 import { users } from "@/data/users.store";
 import { userIdParamsSchema } from "@/validators/users/user.params";
 
-const searchUsers = (userId: Number) => {
+export const searchUsers = (userId: Number) => {
     // Search users 'database', returns first matching object, or `undefined` if none are found
     const result = users.find((user) => userId === user.id);
 
