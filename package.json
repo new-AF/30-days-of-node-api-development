@@ -8,7 +8,8 @@
         "day-2": "tsx watch --tsconfig day-2-routing-controllers/tsconfig.json day-2-routing-controllers/src/server.ts",
         "day-3": "tsx watch --tsconfig day-3-post-validation/tsconfig.json day-3-post-validation/src/server.ts",
         "day-4": "tsx watch --tsconfig day-4-put-patch/tsconfig.json day-4-put-patch/src/server.ts",
-        "day-5": "tsx watch --tsconfig day-5-delete/tsconfig.json day-5-delete/src/server.ts"
+        "day-5": "tsx watch --tsconfig day-5-delete/tsconfig.json day-5-delete/src/server.ts",
+        "day-6": "tsx watch --tsconfig day-6-more-middleware/tsconfig.json day-6-more-middleware/src/server.ts"
     },
     "keywords": [],
     "author": "",
