@@ -17,7 +17,7 @@ const getTimeWithDateUTC = (): string => {
     return `${time} UTC`;
 };
 
-export const logRequests = (
+export const logRequest = (
     request: Request,
     _response: Response,
     next: NextFunction
@@ -26,6 +26,6 @@ export const logRequests = (
     const { method, originalUrl } = request;
     console.log(`[${time}] ${method} ${originalUrl}`);
 
-    // Check API Keys
+    // Authorization middleware: check API key
     next();
 };

@@ -1,7 +1,7 @@
 import express from "express";
 import { PORT } from "@/config/environment";
 import { userRouter } from "@/routes/user.route";
-import { logRequests } from "./middleware/logRequests";
+import { logRequest } from "./middleware/logRequest";
 import { checkApiKey } from "./middleware/checkApiKey";
 import { errorHandler } from "./middleware/errorHandler";
 
@@ -9,7 +9,7 @@ const app = express();
 
 // --- Middleware ----
 // 1) Log every request
-app.use(logRequests);
+app.use(logRequest);
 
 // 2) Convert request body to JSON
 app.use(express.json());
