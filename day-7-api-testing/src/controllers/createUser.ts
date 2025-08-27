@@ -14,17 +14,22 @@ export const createUser = (request: Request, response: Response) => {
 
     if (success === false) {
         // Bad request, often malformed user input
-        // Zod Error, to be handled by `errorHandler` middleware
-        throw error;
+        response.status(400);
+        response.json({
+            error: z.flattenError(error),
+        });
+        return;
     }
 
-    const { name, email, password } = data;
-    const newUser: UserModel = { id: users.length + 1, name, email, password };
+    const { name, email } = data;
+    const newUser: UserModel = { id: users.length + 1, name, email };
 
     // Validate final model shape as a guard-rail
     const modelCheck = userModelSchema.safeParse(newUser);
     if (modelCheck.success === false) {
-        throw modelCheck.error;
+        response.status(500);
+        response.json({ error: "Internal model validation failed." });
+        return;
     }
 
     users.push(newUser);

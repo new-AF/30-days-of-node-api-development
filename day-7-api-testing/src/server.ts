@@ -5,7 +5,7 @@ import { logRequest } from "./middleware/logRequest";
 import { checkApiKey } from "./middleware/checkApiKey";
 import { errorHandler } from "./middleware/errorHandler";
 
-const app = express();
+export const app = express();
 
 // --- Middleware ----
 // 1) Log every request
@@ -25,6 +25,6 @@ app.use(errorHandler);
 
 app.listen(PORT, () => {
     console.log(
-        `🚀 Day 7: JWT Authentication server running on http://localhost:${PORT}`
+        `🚀 Day 7: API Testing server running on http://localhost:${PORT}`
     );
 });

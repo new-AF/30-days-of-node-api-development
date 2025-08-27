@@ -37,10 +37,6 @@ export const userModelSchema = z.object({
         .regex(namePattern, "Name must contain only letters and spaces"),
 
     email: z.email("Invalid email address").min(1, "Email is required"),
-
-    password: z
-        .string("Password is required")
-        .min(1, "Password of length at least 1 is required"),
 });
 
 export type UserModel = z.infer<typeof userModelSchema>;

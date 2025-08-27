@@ -3,7 +3,7 @@ import path from "path";
 
 // Load the .env from the current day's folder
 dotenv.config({
-    path: path.resolve(process.cwd(), "day-7-jwts/.env"),
+    path: path.resolve(process.cwd(), "day-7-api-testing/.env"),
 });
 
 // Fallback to port 3000 if not defined

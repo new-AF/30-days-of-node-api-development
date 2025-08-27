@@ -1,4 +1,4 @@
-import { type UserModel } from "@/validators/user.schema";
+import { type UserModel } from "@/validators/users/user.model";
 
 // Simulates a database table of users
 export const users: UserModel[] = [

@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
+    "type": "module",
     "scripts": {
         "day-1": "tsx watch --tsconfig day-1-setup/tsconfig.json day-1-setup/src/server.ts",
         "day-2": "tsx watch --tsconfig day-2-routing-controllers/tsconfig.json day-2-routing-controllers/src/server.ts",
@@ -11,7 +12,8 @@
         "day-5": "tsx watch --tsconfig day-5-delete/tsconfig.json day-5-delete/src/server.ts",
         "day-6": "tsx watch --tsconfig day-6-more-middleware/tsconfig.json day-6-more-middleware/src/server.ts",
         "day-6-generate-key": "tsx --tsconfig day-6-more-middleware/tsconfig.json day-6-more-middleware/src/scripts/generateApiKey.ts",
-        "day-7": "tsx watch --tsconfig day-7-jwts/tsconfig.json day-7-jwts/src/server.ts",
+        "day-7": "tsx watch --tsconfig day-7-api-testing/tsconfig.json day-7-api-testing/src/server.ts",
+        "test:day-7": "vitest --config day-7-api-testing/vitest.config.ts",
         "day-7-generate-jwt-access-secret": "tsx --tsconfig day-7-jwts/tsconfig.json day-7-jwts/src/scripts/generateJwtAccessSecret.ts",
         "day-7-generate-jwt-refresh-secret": "tsx --tsconfig day-7-jwts/tsconfig.json day-7-jwts/src/scripts/generateJwtRefreshSecret.ts"
     },
@@ -25,7 +27,10 @@
     "devDependencies": {
         "@types/express": "^5.0.3",
         "@types/node": "^24.2.1",
+        "@types/supertest": "^6.0.3",
+        "supertest": "^7.1.4",
         "tsx": "^4.20.3",
-        "typescript": "^5.9.2"
+        "typescript": "^5.9.2",
+        "vitest": "^3.2.4"
     }
 }

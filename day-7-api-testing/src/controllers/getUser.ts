@@ -2,8 +2,15 @@ import { Request, Response } from "express";
 import { z } from "zod";
 import { users } from "@/data/users.store";
 import { userIdParamsSchema } from "@/validators/users/user.params";
-import { searchUsers } from "@/data/utils/searchUsers";
-import { copyUserWithoutProperties } from "@/data/utils/copyUserWithoutProperties";
+
+export const searchUsers = (userId: Number) => {
+    // Search users 'database', returns first matching object, or `undefined` if none are found
+    const result = users.find((user) => userId === user.id);
+
+    if (result === undefined) return { success: false };
+
+    return { success: true, user: result };
+};
 
 // GET /users/:id
 export const getUser = (request: Request, response: Response) => {
@@ -31,5 +38,5 @@ export const getUser = (request: Request, response: Response) => {
     }
 
     response.status(200);
-    response.json(copyUserWithoutProperties(user, "password"));
+    response.json(user);
 };
