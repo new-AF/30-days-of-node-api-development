@@ -1,10 +1,11 @@
-import { Response } from "express";
+import { NextFunction, Response } from "express";
 import { ZodError, flattenError } from "zod";
 
 export const errorHandler = (
     error: unknown,
-    request: Request,
-    response: Response
+    _request: Request,
+    response: Response,
+    _next: NextFunction
 ) => {
     console.log(`errorHandler ${error}`);
     // Validation error
