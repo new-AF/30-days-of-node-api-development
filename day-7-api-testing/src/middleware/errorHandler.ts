@@ -1,7 +1,12 @@
 import { Response } from "express";
 import { ZodError, flattenError } from "zod";
 
-export const errorHandler = (error: unknown, response: Response) => {
+export const errorHandler = (
+    error: unknown,
+    request: Request,
+    response: Response
+) => {
+    console.log(`errorHandler ${error}`);
     // Validation error
     if (error instanceof ZodError) {
         // Bad request
