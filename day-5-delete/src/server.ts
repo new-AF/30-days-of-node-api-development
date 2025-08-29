@@ -1,7 +1,7 @@
 import express from "express";
 import { PORT } from "@/config/environment";
 import { userRouter } from "@/routes/user.route";
-import { errorHandler } from "./middleware/errorHandler";
+import { errorHandler } from "@/middleware/errorHandler";
 
 const app = express();
 
