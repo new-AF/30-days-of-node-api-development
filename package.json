@@ -15,16 +15,20 @@
         "day-7": "tsx watch --tsconfig day-7-api-testing/tsconfig.json day-7-api-testing/src/server.ts",
         "test:day-7": "vitest --config day-7-api-testing/vitest.config.ts",
         "day-7-generate-jwt-access-secret": "tsx --tsconfig day-7-jwts/tsconfig.json day-7-jwts/src/scripts/generateJwtAccessSecret.ts",
-        "day-7-generate-jwt-refresh-secret": "tsx --tsconfig day-7-jwts/tsconfig.json day-7-jwts/src/scripts/generateJwtRefreshSecret.ts"
+        "day-7-generate-jwt-refresh-secret": "tsx --tsconfig day-7-jwts/tsconfig.json day-7-jwts/src/scripts/generateJwtRefreshSecret.ts",
+        "day-8": "tsx watch --tsconfig day-8-sql/tsconfig.json day-8-sql/src/server.ts",
+        "test:day-8": "vitest --config day-8-sql/vitest.config.ts"
     },
     "keywords": [],
     "author": "",
     "dependencies": {
+        "better-sqlite3": "^12.2.0",
         "dotenv": "^17.2.1",
         "express": "^5.1.0",
         "zod": "^4.0.17"
     },
     "devDependencies": {
+        "@types/better-sqlite3": "^7.6.13",
         "@types/express": "^5.0.3",
         "@types/node": "^24.2.1",
         "@types/supertest": "^6.0.3",

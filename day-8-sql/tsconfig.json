@@ -1,0 +1,16 @@
+{
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "baseUrl": "src",
+        "paths": {
+            "@/*": ["*"]
+        }
+    },
+    "include": [
+        "src"
+        // "tests/database/main.ts",
+        // "tests/database/insertOrIgnore.test.ts",
+        // "tests/database/schema.ts",
+        // "tests/database/connection.test.ts"
+    ]
+}
